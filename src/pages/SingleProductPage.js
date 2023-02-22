@@ -1,10 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useProductsContext } from "../context/products_context";
-import {
-  single_product_url,
-  single_product_url as url,
-} from "../utils/constants";
+import { single_product_url as url } from "../utils/constants";
 import { formatPrice } from "../utils/helpers";
 import {
   Loading,
@@ -29,15 +26,17 @@ const SingleProductPage = () => {
 
   useEffect(() => {
     fetchSingleProduct(`${url}${id}`);
+    // eslint-disable-next-line
   }, [id]);
 
-  // useEffect(() => {
-  //   if (error) {
-  //     setTimeout(() => {
-  //       navigate("/");
-  //     }, 3000);
-  //   }
-  // }, [error]);
+  useEffect(() => {
+    if (error) {
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
+    }
+    // eslint-disable-next-line
+  }, [error]);
 
   if (loading) {
     return <Loading></Loading>;
