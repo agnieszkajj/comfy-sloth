@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { PageHero, StripeCheckout } from "../components";
+
 // extra imports
+
 import { useCartContext } from "../context/cart_context";
 import { Link } from "react-router-dom";
 
@@ -10,17 +12,17 @@ const CheckoutPage = () => {
 
   return (
     <main>
-      <PageHero title="checkout"></PageHero>
-      <Wrapper className="page">
+      <PageHero title="checkout" />
+      <Wrapper className="page-100">
         {cart.length < 1 ? (
           <div className="empty">
             <h2>Your cart is empty</h2>
-            <Link t0="/products" className="btn">
+            <Link to="/products" className="btn">
               fill it
             </Link>
           </div>
         ) : (
-          <StripeCheckout></StripeCheckout>
+          <StripeCheckout />
         )}
       </Wrapper>
     </main>
